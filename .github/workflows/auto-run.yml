@@ -1,0 +1,20 @@
+name: Ejecutar Script en Bucle
+
+on:
+  push:
+  schedule:
+    - cron: '*/10 * * * *'  # Se ejecuta cada 10 minutos
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Instalar dependencias
+        run: pip install requests  # Si tu script depende de otras librerías, puedes agregarlas aquí
+      - name: Ejecutar el script en bucle
+        run: |
+          while true; do
+            python3 contador.py  # Cambia esto a tu archivo de script
+            sleep 10  # Espera 10 segundos antes de volver a ejecutarlo
+          done
