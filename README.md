@@ -1,3 +1,0 @@
-# termuxschool
-# termuxschool
-# termuxschool
