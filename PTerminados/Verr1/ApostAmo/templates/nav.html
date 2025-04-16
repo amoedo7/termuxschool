@@ -1,0 +1,33 @@
+<nav class="nav-bar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="/" class="logo">ApostAmo</a>
+            <div class="nav-links">
+                <a href="/ranking">Ranking 🏆</a>
+                {% if session.username %}
+                    <a href="/create">Crear Apuesta ➕</a>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="nav-right">
+            {% if session.username %}
+                <div class="user-panel">
+                    <a href="/profile" class="user-info">
+                        <span class="username">{{ session.username }}</span>
+                        <span class="user-balance">💎 {{ user_balance }}</span>
+                    </a>
+                    <div class="user-actions">
+                        <a href="/profile" class="btn-secondary btn-sm">Mi Perfil</a>
+                        <a href="/logout" class="btn-danger btn-sm">Salir</a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="auth-buttons">
+                    <a href="/login" class="btn-secondary">Iniciar Sesión</a>
+                    <a href="/register" class="btn-primary">Registrarse</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</nav> 

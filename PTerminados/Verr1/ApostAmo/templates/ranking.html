@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Ranking - ApostAmo{% endblock %}
+
+{% block content %}
+<div class="ranking-container">
+    <h2>🏆 Ranking de Usuarios</h2>
+    
+    {% if users %}
+        <div class="ranking-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Usuario</th>
+                        <th>Diamantes</th>
+                        <th>Apuestas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr class="{% if loop.index == 1 %}gold{% elif loop.index == 2 %}silver{% elif loop.index == 3 %}bronze{% endif %}">
+                            <td class="position">
+                                {% if loop.index == 1 %}
+                                    🥇
+                                {% elif loop.index == 2 %}
+                                    🥈
+                                {% elif loop.index == 3 %}
+                                    🥉
+                                {% else %}
+                                    {{ loop.index }}
+                                {% endif %}
+                            </td>
+                            <td class="username">{{ user.username }}</td>
+                            <td class="diamonds">{{ user.diamonds }} 💎</td>
+                            <td class="bets">{{ user.total_bets }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <p>Aún no hay usuarios en el ranking</p>
+            {% if not session.username %}
+                <p>¡Sé el primero en participar!</p>
+                <a href="{{ url_for('register') }}" class="btn-primary">Registrarse</a>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+<style>
+.ranking-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.ranking-table {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+}
+
+th {
+    background: #f5f5f5;
+    font-weight: bold;
+}
+
+tr:not(:last-child) {
+    border-bottom: 1px solid #eee;
+}
+
+.position {
+    width: 100px;
+    text-align: center;
+}
+
+.diamonds, .bets {
+    text-align: right;
+}
+
+.gold {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.silver {
+    background: rgba(192, 192, 192, 0.1);
+}
+
+.bronze {
+    background: rgba(205, 127, 50, 0.1);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.empty-state p {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+.btn-primary {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background: #45a049;
+}
+
+@media (max-width: 768px) {
+    .ranking-container {
+        margin: 1rem;
+        padding: 0;
+    }
+    
+    th, td {
+        padding: 0.75rem;
+    }
+    
+    .position {
+        width: 60px;
+    }
+}
+</style>
+{% endblock %} 

@@ -1,0 +1,19 @@
+Termux-Hacker-Pack/
+│
+├── scripts/
+│   ├── net-info.sh
+│   ├── port-scan.sh
+│   ├── wifi-scan.sh
+│   ├── whois-lookup.py
+│   ├── proc-monitor.sh
+│   ├── keylogger-detector.sh
+│   ├── find-hidden-files.sh
+│   ├── backdoor-scanner.sh
+│   ├── net-connections.sh
+│   ├── sys-info.sh
+│   ├── all-root-termux.sh
+│   └── report-gen.sh
+│
+├── estructura.txt
+├── requirements.txt
+└── README.md

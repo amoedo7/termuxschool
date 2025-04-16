@@ -1,0 +1,92 @@
+Basado en la revisión del código y la funcionalidad, voy a crear un prompt detallado para que otra IA entienda ApostAmo:# ApostAmo - Sistema de Apuestas Amistosas
+
+## Descripción del Sistema
+ApostAmo es una plataforma de apuestas amistosas que permite a los usuarios crear y participar en apuestas utilizando una moneda virtual llamada "diamantes". El sistema está diseñado para ser justo, transparente y social.
+
+## Componentes Principales
+
+### 1. Sistema de Usuarios
+- Cada usuario nuevo recibe 1000 💎 diamantes iniciales
+- Autenticación mediante usuario y contraseña
+- Seguimiento de balance de diamantes en tiempo real
+
+### 2. Sistema de Apuestas
+- **Creación de Apuestas**
+  - Título/Pregunta de la apuesta
+  - Dos opciones para apostar (Opción A y Opción B)
+  - Generación automática de token para juez
+  - Estado de apuesta (activa/finalizada)
+
+- **Participación en Apuestas**
+  - Los usuarios pueden apostar en cualquier lado
+  - Sistema de apuestas ordenado por tiempo de entrada
+  - Validación de balance suficiente
+  - Actualización en tiempo real de totales
+
+- **Finalización de Apuestas**
+  - Sistema de juez imparcial con token único
+  - Distribución justa de ganancias
+  - Cálculo proporcional de recompensas
+  - Historial de resultados
+
+### 3. Lógica de Negocio Clave
+
+#### Distribución de Ganancias
+```python
+# Pseudocódigo de distribución
+def distribuir_ganancias(apuesta, lado_ganador):
+    # 1. Pool total del lado perdedor
+    pool_disponible = total_lado_perdedor
+    
+    # 2. Procesar ganadores en orden de entrada
+    for apuesta in lado_ganador:
+        if pool_disponible > 0:
+            # Calcular ganancia proporcional
+            ganancia = min(apuesta.cantidad, pool_disponible)
+            usuario.diamantes += (apuesta.cantidad + ganancia)
+            pool_disponible -= ganancia
+        else:
+            # Devolver apuesta original si no hay más pool
+            usuario.diamantes += apuesta.cantidad
+```
+
+### 4. Reglas del Sistema
+1. Los usuarios no pueden apostar más diamantes de los que tienen
+2. Las apuestas solo pueden ser finalizadas por el juez designado
+3. Los resultados son permanentes una vez declarados
+4. Las ganancias se distribuyen en orden de entrada
+5. Los usuarios reciben al menos su apuesta original de vuelta
+
+### 5. Interfaz de Usuario
+- Diseño responsive para móvil y escritorio
+- Actualización en tiempo real de estados
+- Panel de usuario persistente
+- Visualización clara de estadísticas
+
+### 6. Almacenamiento de Datos
+- Base de datos SQLite con tablas para:
+  - Usuarios (username, password, diamonds)
+  - Apuestas (id, question, options, totals, status)
+  - Participaciones (bet_id, username, amount, side)
+
+### 7. Endpoints Principales
+POST /create # Crear nueva apuesta
+GET /bet/{id} # Ver apuesta específica
+POST /bet/{id}/place # Realizar apuesta
+GET /bet/{id}/judge/{token} # Panel del juez
+POST /judge/{id}/decide # Finalizar apuesta
+
+
+## Consideraciones Técnicas
+1. Manejo de concurrencia en transacciones
+2. Validación de tokens de juez
+3. Persistencia de sesiones de usuario
+4. Manejo de errores y excepciones
+5. Actualizaciones en tiempo real
+
+## Objetivos del Sistema
+1. Proporcionar una plataforma justa para apuestas amistosas
+2. Mantener la integridad de las transacciones
+3. Ofrecer una experiencia de usuario fluida
+4. Garantizar la transparencia en los resultados
+5. Facilitar la interacción social entre usuarios

@@ -1,0 +1,7 @@
+requests
+ipwhois
+argparse
+subprocess
+colorama
+termcolor
+rich

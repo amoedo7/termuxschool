@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Interfaz de Mozos</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <h1>Pedidos en Curso</h1>
+    <table>
+        <tr>
+            <th>Mesa</th>
+            <th>Productos</th>
+            <th>Estado</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order['table'] }}</td>
+            <td>
+                {% for item, qty in order['items'].items() %}
+                    {{ item }}: {{ qty }}<br>
+                {% endfor %}
+            </td>
+            <td>{{ order['status'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

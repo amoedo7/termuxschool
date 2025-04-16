@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Enlaces de la Apuesta - ApostAmo{% endblock %}
+
+{% block content %}
+<div class="links-container">
+    <div class="links-card">
+        <h2>¡Apuesta creada con éxito!</h2>
+        <div class="bet-info">
+            <h3>{{ bet.question }}</h3>
+            <div class="options-list">
+                <div class="option">
+                    <span class="option-label">Opción A:</span>
+                    <span class="option-value">{{ bet.option_a }}</span>
+                </div>
+                <div class="option">
+                    <span class="option-label">Opción B:</span>
+                    <span class="option-value">{{ bet.option_b }}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="share-links">
+            <h3>Enlaces importantes:</h3>
+            
+            <div class="link-box">
+                <h4>🔗 Link para participantes:</h4>
+                <p>Comparte este enlace con las personas que quieras que participen en la apuesta:</p>
+                <div class="copy-section">
+                    <input type="text" id="betLink" value="{{ urls.bet_url }}" readonly>
+                    <button onclick="copyToClipboard('betLink')" class="copy-btn">Copiar</button>
+                </div>
+            </div>
+
+            <div class="link-item">
+                <h3>Link para el Juez:</h3>
+                <div class="link-box">
+                    <input type="text" readonly value="{{ request.host_url }}bet/{{ bet.id }}/judge/{{ bet.judge_token }}" id="judgeLink">
+                    <button onclick="copyToClipboard('judgeLink')" class="btn-copy">Copiar</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <a href="{{ urls.bet_url }}" class="btn-primary">Ver la apuesta</a>
+            <a href="/" class="btn-secondary">Volver al inicio</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<script>
+function copyToClipboard(elementId) {
+    const copyText = document.getElementById(elementId);
+    copyText.select();
+    document.execCommand('copy');
+    
+    const button = copyText.nextElementSibling;
+    const originalText = button.textContent;
+    button.textContent = '¡Copiado!';
+    setTimeout(() => {
+        button.textContent = originalText;
+    }, 2000);
+}
+</script> 

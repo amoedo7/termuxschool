@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Interfaz del Bar</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <h1>Pedidos para el Bar</h1>
+    <table>
+        <tr>
+            <th>Mesa</th>
+            <th>Bebidas</th>
+            <th>Estado</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order['table'] }}</td>
+            <td>
+                {{ order['items']['Cerveza'] }}
+            </td>
+            <td>{{ order['status'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

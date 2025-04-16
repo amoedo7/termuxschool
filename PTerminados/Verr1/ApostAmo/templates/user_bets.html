@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}Mis Apuestas - ApostAmo{% endblock %}
+
+{% block content %}
+<div class="user-bets-container">
+    <h2>Mis Apuestas</h2>
+
+    {% if bets and (bets.active or bets.finished) %}
+        <!-- Apuestas Activas -->
+        <div class="bets-section">
+            <h3>Apuestas Activas</h3>
+            {% if bets.active %}
+                <div class="bets-grid">
+                    {% for bet in bets.active %}
+                        <div class="bet-card">
+                            <h4>{{ bet.question }}</h4>
+                            <div class="bet-options">
+                                <div class="option">
+                                    <span>{{ bet.option_a }}</span>
+                                    <span class="amount">{{ bet.total_a }} 💎</span>
+                                </div>
+                                <div class="option">
+                                    <span>{{ bet.option_b }}</span>
+                                    <span class="amount">{{ bet.total_b }} 💎</span>
+                                </div>
+                            </div>
+                            <a href="/bet/{{ bet.id }}" class="btn-primary">Ver Detalles</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-bets">No tienes apuestas activas</p>
+            {% endif %}
+        </div>
+
+        <!-- Apuestas Finalizadas -->
+        <div class="bets-section">
+            <h3>Apuestas Finalizadas</h3>
+            {% if bets.finished %}
+                <div class="bets-grid">
+                    {% for bet in bets.finished %}
+                        <div class="bet-card finished">
+                            <h4>{{ bet.question }}</h4>
+                            <div class="bet-result">
+                                <span class="winner-label">Ganador:</span>
+                                <span class="winner-option">
+                                    {{ bet.option_a if bet.winner == 'a' else bet.option_b }}
+                                </span>
+                            </div>
+                            <a href="/bet/{{ bet.id }}/result" class="btn-secondary">Ver Resultados</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-bets">No tienes apuestas finalizadas</p>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <p>Aún no has participado en ninguna apuesta</p>
+            <a href="/" class="btn-primary">Ver Apuestas Disponibles</a>
+        </div>
+    {% endif %}
+</div>
+
+<style>
+.user-bets-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.bets-section {
+    margin: 2rem 0;
+}
+
+.bets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.bet-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.bet-options {
+    margin: 1rem 0;
+}
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+.amount {
+    font-weight: bold;
+}
+
+.bet-result {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.winner-label {
+    color: #666;
+    margin-right: 0.5rem;
+}
+
+.winner-option {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.no-bets {
+    text-align: center;
+    color: #666;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background: #4CAF50;
+    color: white;
+}
+
+.btn-secondary {
+    background: #f8f9fa;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.btn-primary:hover {
+    background: #45a049;
+}
+
+.btn-secondary:hover {
+    background: #e9ecef;
+}
+
+@media (max-width: 768px) {
+    .bets-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %} 

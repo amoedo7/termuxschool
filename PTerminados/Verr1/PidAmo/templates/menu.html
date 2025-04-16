@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Menú Digital</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <script src="/static/script.js"></script>
+</head>
+<body>
+    <h1>Menú Digital</h1>
+    <form action="/order" method="post">
+        <label for="table_number">Número de Mesa:</label>
+        <input type="text" name="table_number" id="table_number" required>
+        <h2>Productos</h2>
+        <div>
+            <label>Hamburguesa - $10</label>
+            <input type="number" name="quantity_hamburguesa" min="0" value="0">
+        </div>
+        <div>
+            <label>Cerveza - $5</label>
+            <input type="number" name="quantity_cerveza" min="0" value="0">
+        </div>
+        <button type="submit">Realizar Pedido</button>
+    </form>
+</body>
+</html>

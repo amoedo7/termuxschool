@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ApostAmo{% endblock %}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+</head>
+<body>
+    <!-- Barra de estado persistente -->
+    <div class="status-bar">
+        <div class="status-container">
+            <div class="status-left">
+                <a href="/" class="logo">ApostAmo</a>
+            </div>
+            <div class="status-center">
+                <nav class="main-nav">
+                    <a href="/ranking">Ranking 🏆</a>
+                    {% if session.username %}
+                        <a href="/create">Crear Apuesta ➕</a>
+                    {% endif %}
+                </nav>
+            </div>
+            <div class="status-right">
+                {% if session.username %}
+                    <div class="user-status">
+                        <div class="resource-display">
+                            <div class="resource diamonds">
+                                <span class="resource-icon">💎</span>
+                                <span class="resource-amount">{{ user_balance }}</span>
+                            </div>
+                            <!-- Espacio para futuros recursos -->
+                            <!-- <div class="resource crypto">
+                                <span class="resource-icon">₿</span>
+                                <span class="resource-amount">0.00</span>
+                            </div> -->
+                        </div>
+                        <div class="user-controls">
+                            <a href="/profile" class="username">{{ session.username }}</a>
+                            <div class="user-menu">
+                                <a href="/profile" class="menu-item">Mi Perfil</a>
+                                <a href="/logout" class="menu-item danger">Cerrar Sesión</a>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="guest-status">
+                        <span class="guest-label">No conectado</span>
+                        <div class="auth-buttons">
+                            <a href="/login" class="btn-secondary btn-sm">Iniciar Sesión</a>
+                            <a href="/register" class="btn-primary btn-sm">Registrarse</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html> 

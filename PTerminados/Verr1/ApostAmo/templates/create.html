@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="create-bet-container">
+    <h2>Crear Nueva Apuesta</h2>
+    
+    <form id="createBetForm" class="bet-form">
+        <div class="form-group">
+            <label for="question">Pregunta:</label>
+            <input type="text" id="question" name="question" required 
+                   placeholder="Ej: ¿Quién ganará el partido?" class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="optionA">Opción A:</label>
+            <input type="text" id="optionA" name="optionA" required 
+                   placeholder="Ej: Equipo Local" class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="optionB">Opción B:</label>
+            <input type="text" id="optionB" name="optionB" required 
+                   placeholder="Ej: Equipo Visitante" class="form-control">
+        </div>
+        
+        <button type="submit" class="btn-primary">Crear Apuesta</button>
+    </form>
+</div>
+
+<script>
+document.getElementById('createBetForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = {
+        question: document.getElementById('question').value,
+        optionA: document.getElementById('optionA').value,
+        optionB: document.getElementById('optionB').value
+    };
+    
+    try {
+        const response = await fetch('/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            // Mostrar mensaje de éxito
+            showMessage('success', data.message);
+            // Redirigir a la página de enlaces después de crear la apuesta
+            setTimeout(() => {
+                window.location.href = `/bet/${data.bet_id}/links`;
+            }, 1500);
+        } else {
+            showMessage('error', data.message);
+        }
+    } catch (error) {
+        showMessage('error', 'Error al crear la apuesta');
+        console.error('Error:', error);
+    }
+});
+
+function showMessage(type, text) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `toast-message ${type}`;
+    messageDiv.textContent = text;
+    document.body.appendChild(messageDiv);
+    
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 3000);
+}
+</script>
+
+<style>
+.create-bet-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.bet-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-control {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+.toast-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    color: white;
+    z-index: 1000;
+}
+
+.toast-message.success {
+    background-color: #4CAF50;
+}
+
+.toast-message.error {
+    background-color: #f44336;
+}
+
+@media (max-width: 768px) {
+    .create-bet-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+}
+</style>
+{% endblock %}

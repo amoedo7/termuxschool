@@ -1,0 +1,305 @@
+{% extends "base.html" %}
+
+{% block title %}{{ bet.question }} - ApostAmo{% endblock %}
+
+{% block content %}
+<div class="bet-page-container">
+    <!-- Breadcrumb navigation -->
+    <div class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span class="separator">›</span>
+        <span class="current">Apuesta</span>
+    </div>
+
+    <div class="bet-detail-card">
+        <div class="bet-header">
+            <h2>{{ bet.question }}</h2>
+            <div class="bet-meta">
+                <span class="bet-id">ID: #{{ bet.id[:8] }}</span>
+                <span class="bet-status {{ bet.status }}">
+                    {% if bet.status == 'active' %}
+                        🟢 En curso
+                    {% else %}
+                        🔴 Finalizada
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+
+        <div class="bet-options-container">
+            <div class="bet-option side-a {% if bet.winner == 'a' %}winner{% endif %}">
+                <div class="option-header">
+                    <h3>{{ bet.option_a }}</h3>
+                    <span class="total-amount">{{ bet.total_a|default(0) }} 💎</span>
+                </div>
+                <div class="option-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Apostadores</span>
+                        <span class="stat-value">{{ (bet.side_a|default([]))|length }}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Promedio</span>
+                        <span class="stat-value">
+                            {% set side_a_length = (bet.side_a|default([]))|length %}
+                            {% if side_a_length > 0 %}
+                                {{ (bet.total_a / side_a_length)|round(1) }} 💎
+                            {% else %}
+                                0 💎
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+                {% if bet.status == 'active' and is_authenticated %}
+                    <button onclick="showBetModal('a', '{{ bet.option_a }}')" class="btn-bet">
+                        Apostar a esta opción
+                    </button>
+                {% endif %}
+            </div>
+
+            <div class="vs-indicator">VS</div>
+
+            <div class="bet-option side-b {% if bet.winner == 'b' %}winner{% endif %}">
+                <div class="option-header">
+                    <h3>{{ bet.option_b }}</h3>
+                    <span class="total-amount">{{ bet.total_b|default(0) }} 💎</span>
+                </div>
+                <div class="option-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Apostadores</span>
+                        <span class="stat-value">{{ (bet.side_b|default([]))|length }}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Promedio</span>
+                        <span class="stat-value">
+                            {% set side_b_length = (bet.side_b|default([]))|length %}
+                            {% if side_b_length > 0 %}
+                                {{ (bet.total_b / side_b_length)|round(1) }} 💎
+                            {% else %}
+                                0 💎
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+                {% if bet.status == 'active' and is_authenticated %}
+                    <button onclick="showBetModal('b', '{{ bet.option_b }}')" class="btn-bet">
+                        Apostar a esta opción
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if bet.status == 'active' %}
+            <div class="bet-info-panel">
+                <div class="info-item">
+                    <span class="info-icon">💰</span>
+                    <span class="info-text">Pool total: {{ (bet.total_a|default(0) + bet.total_b|default(0)) }} 💎</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">👥</span>
+                    <span class="info-text">
+                        {{ ((bet.side_a|default([])) + (bet.side_b|default([])))|length }} participantes
+                    </span>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Modal para apostar -->
+<div id="betModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Realizar Apuesta</h3>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="selected-option">
+                <span class="option-label">Opción seleccionada:</span>
+                <span id="selectedOption" class="option-value"></span>
+            </div>
+            
+            <div class="bet-form">
+                <div class="form-group">
+                    <label for="betAmount">Cantidad de diamantes:</label>
+                    <div class="amount-controls">
+                        <div class="quick-amounts">
+                            <button type="button" onclick="setBetAmount(10)" class="amount-preset">10 💎</button>
+                            <button type="button" onclick="setBetAmount(50)" class="amount-preset">50 💎</button>
+                            <button type="button" onclick="setBetAmount(100)" class="amount-preset">100 💎</button>
+                        </div>
+                        <div class="amount-input">
+                            <button type="button" onclick="adjustAmount(-10)" class="btn-adjust">-10</button>
+                            <input type="number" id="betAmount" min="1" value="1">
+                            <button type="button" onclick="adjustAmount(10)" class="btn-adjust">+10</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="balance-info">
+                    <span>Tu saldo: {{ user_balance|default(0) }} 💎</span>
+                </div>
+
+                <button onclick="placeBet()" class="btn-primary btn-large">
+                    Confirmar Apuesta
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentSide = null;
+
+function showBetModal(side, optionName) {
+    currentSide = side;
+    document.getElementById('selectedOption').textContent = optionName;
+    document.getElementById('betModal').style.display = 'block';
+}
+
+function setBetAmount(amount) {
+    document.getElementById('betAmount').value = amount;
+}
+
+function adjustAmount(change) {
+    const input = document.getElementById('betAmount');
+    let newValue = parseInt(input.value) + change;
+    if (newValue < 1) newValue = 1;
+    input.value = newValue;
+}
+
+async function placeBet() {
+    const amount = parseInt(document.getElementById('betAmount').value);
+    if (isNaN(amount) || amount < 1) {
+        showMessage('error', 'La cantidad mínima es 1 diamante');
+        return;
+    }
+
+    // Deshabilitar el botón mientras se procesa
+    const confirmButton = document.querySelector('.btn-primary.btn-large');
+    confirmButton.disabled = true;
+    confirmButton.textContent = 'Procesando...';
+
+    try {
+        const response = await fetch(`${window.location.pathname}/place`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                side: currentSide,
+                amount: amount
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok && data.success) {
+            // Actualizar totales inmediatamente
+            document.querySelector('.side-a .total-amount').textContent = `${data.total_a} 💎`;
+            document.querySelector('.side-b .total-amount').textContent = `${data.total_b} 💎`;
+            
+            // Actualizar balance del usuario
+            const balanceElements = document.querySelectorAll('.resource-amount');
+            balanceElements.forEach(element => {
+                element.textContent = data.new_balance;
+            });
+            
+            // Actualizar estadísticas
+            updateBetStats(data);
+            
+            // Cerrar modal y mostrar mensaje de éxito
+            document.getElementById('betModal').style.display = 'none';
+            showMessage('success', '¡Apuesta realizada con éxito!');
+        } else {
+            showMessage('error', data.message || 'Error al realizar la apuesta');
+        }
+    } catch (error) {
+        console.error('Error en placeBet:', error);
+        showMessage('error', 'Error al comunicarse con el servidor');
+    } finally {
+        // Restaurar el botón
+        confirmButton.disabled = false;
+        confirmButton.textContent = 'Confirmar Apuesta';
+    }
+}
+
+function updateBetStats(data) {
+    // Actualizar estadísticas de lado A
+    const sideAStats = document.querySelector('.side-a .option-stats');
+    if (sideAStats) {
+        sideAStats.innerHTML = `
+            <div class="stat-item">
+                <span class="stat-label">Apostadores</span>
+                <span class="stat-value">${data.side_a_count || 0}</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Promedio</span>
+                <span class="stat-value">${data.side_a_average || 0} 💎</span>
+            </div>
+        `;
+    }
+
+    // Actualizar estadísticas de lado B
+    const sideBStats = document.querySelector('.side-b .option-stats');
+    if (sideBStats) {
+        sideBStats.innerHTML = `
+            <div class="stat-item">
+                <span class="stat-label">Apostadores</span>
+                <span class="stat-value">${data.side_b_count || 0}</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Promedio</span>
+                <span class="stat-value">${data.side_b_average || 0} 💎</span>
+            </div>
+        `;
+    }
+
+    // Actualizar pool total
+    const poolElement = document.querySelector('.bet-info-panel .info-text');
+    if (poolElement) {
+        poolElement.textContent = `Pool total: ${data.total_a + data.total_b} 💎`;
+    }
+}
+
+function showMessage(type, text) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `toast-message ${type}`;
+    messageDiv.textContent = text;
+    
+    // Posicionar el mensaje en el centro superior
+    messageDiv.style.position = 'fixed';
+    messageDiv.style.top = '20px';
+    messageDiv.style.left = '50%';
+    messageDiv.style.transform = 'translateX(-50%)';
+    messageDiv.style.zIndex = '1000';
+    messageDiv.style.padding = '1rem 2rem';
+    messageDiv.style.borderRadius = '4px';
+    messageDiv.style.backgroundColor = type === 'success' ? '#4CAF50' : '#f44336';
+    messageDiv.style.color = 'white';
+    messageDiv.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
+    
+    document.body.appendChild(messageDiv);
+    
+    // Animación de fade out
+    setTimeout(() => {
+        messageDiv.style.transition = 'opacity 0.5s ease-out';
+        messageDiv.style.opacity = '0';
+        setTimeout(() => messageDiv.remove(), 500);
+    }, 2500);
+}
+
+// Cerrar modal
+const modal = document.getElementById('betModal');
+const span = document.getElementsByClassName('close')[0];
+
+span.onclick = function() {
+    modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+</script>
+{% endblock %}

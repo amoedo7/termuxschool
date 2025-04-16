@@ -1,0 +1,18 @@
+C:\Users\El3imm\PWRShell\
+│
+├── PwrShell.ps1                  # Script principal con menú, banner y navegación
+├── Core\
+│   ├── CheckTools.ps1            # Verifica si todo lo esencial está instalado y funcionando
+│   ├── CheckPerms.ps1            # Verifica qué permisos tiene la terminal actual
+│   ├── NetScan.ps1               # Análisis de red + conexiones activas + sospechosas
+│   ├── SysDiag.ps1               # Diagnóstico del sistema y salud general
+│   ├── UserControl.ps1           # Usuarios, sesiones, inicios de sesión, etc.
+│   └── SecAlerts.ps1             # Escaneo profundo de servicios, procesos y alertas
+├── Actions\
+│   ├── FixServices.ps1           # Reinicia o deshabilita servicios extraños
+│   ├── KillConnections.ps1       # Corta conexiones raras o sospechosas
+│   ├── Report.ps1                # Crea log o informe de amenazas encontradas
+└── Data\
+    ├── Logs\
+    │   └── security.log          # Log de acciones realizadas
+    └── settings.json             # Configuraciones del usuario o flags de seguridad

@@ -1,0 +1,13 @@
+📦 Ya tienes cubierto:
+Herramienta	Función principal
+✅ net-info.sh	Info básica de red (IP local, Gateway, MAC...)
+✅ port-scan.sh	Escaneo de puertos abiertos
+✅ wifi-scan.sh	Escaneo de redes WiFi cercanas
+✅ whois-lookup.py	Dueño de IPs o dominios
+✅ proc-monitor.sh	Monitoreo de procesos sospechosos (tcpdump, logkeys)
+✅ keylogger-detector.sh	Detección de keyloggers y módulos raros
+✅ find-hidden-files.sh	Archivos sospechosos: .bak, .log, .old, ocultos
+✅ backdoor-scanner.sh	Detección de posibles backdoors activos
+✅ net-connections.sh	Conexiones salientes/entrantes con análisis
+✅ sys-info.sh	Información del sistema
+✅ all-root-termux.sh	Gestión de privilegios (Root / FakeRoot / Mortal)

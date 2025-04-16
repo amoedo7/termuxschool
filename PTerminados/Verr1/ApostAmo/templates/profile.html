@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - ApostAmo</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <h2>Mi Perfil</h2>
+                <div class="balance-display">
+                    <span class="diamond-icon">💎</span>
+                    <span class="balance-amount">{{ balance }}</span>
+                </div>
+            </div>
+
+            <div class="add-diamonds-section">
+                <h3>Agregar Diamantes</h3>
+                <div class="diamonds-options">
+                    <button onclick="addDiamonds(100)" class="diamond-option">
+                        <span>+100 💎</span>
+                        <span class="price">$1.00</span>
+                    </button>
+                    <button onclick="addDiamonds(500)" class="diamond-option">
+                        <span>+500 💎</span>
+                        <span class="price">$4.50</span>
+                    </button>
+                    <button onclick="addDiamonds(1000)" class="diamond-option">
+                        <span>+1000 💎</span>
+                        <span class="price">$8.00</span>
+                    </button>
+                </div>
+                <p class="coming-soon">Próximamente más métodos de pago...</p>
+            </div>
+
+            <div class="profile-actions">
+                <a href="/profile/bets" class="btn-secondary">
+                    Ver Mis Apuestas
+                </a>
+            </div>
+
+            <div class="actions">
+                <a href="/" class="btn-secondary">Volver a Inicio</a>
+                <a href="/logout" class="btn-danger">Cerrar Sesión</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    async function addDiamonds(amount) {
+        if (!confirm(`¿Confirmar la compra de ${amount} diamantes?`)) {
+            return;
+        }
+
+        try {
+            const response = await fetch('/add-diamonds', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ amount })
+            });
+            
+            const data = await response.json();
+            if (data.success) {
+                alert('¡Diamantes agregados exitosamente!');
+                location.reload();
+            } else {
+                alert('Error: ' + data.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al procesar la solicitud');
+        }
+    }
+    </script>
+</body>
+</html> 

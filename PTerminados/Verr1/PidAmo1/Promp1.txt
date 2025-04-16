@@ -1,0 +1,30 @@
+Prompt ajustado:
+
+Estoy desarrollando una aplicación web llamada PidAmo, cuyo objetivo es facilitar el proceso de pedidos en restaurantes y bares. PidAmo debe permitir a los clientes realizar pedidos de manera eficiente a través de un menú digital accesible desde cualquier dispositivo (PC, móvil, tablet) mediante códigos QR.
+
+Objetivos de PidAmo:
+
+Los clientes escanean el código QR de su mesa, escriben el número de la mesa, y luego acceden al menú.
+El sistema debe permitir seleccionar productos (comidas y bebidas), agregarlos al carrito y proceder al pago.
+Tras el pago, los detalles del pedido deben aparecer automáticamente en las interfaces de cocina y bar, con tiempos de espera actualizados en tiempo real.
+El diseño debe ser coherente, fácil de usar y atractivo, y debe adaptarse bien a dispositivos de diferentes tamaños.
+El sistema debe ser escalable y preparado para futuras funcionalidades.
+Instrucciones para crear el sistema:
+
+create_app.py es el archivo principal que debe generar toda la estructura de la aplicación y el código necesario sin requerir ninguna intervención adicional de mi parte.
+
+Estructura de carpetas: Debe crear automáticamente las carpetas templates/, static/, logs/, src/, config/ y data/, y asegurarse de que todos los archivos se coloquen en sus respectivas rutas.
+Generación de archivos: create_app.py debe generar todos los archivos necesarios, con todo el código funcional y completo, sin que yo tenga que agregar más código. Estos archivos deben ser autónomos y listos para funcionar al ejecutar el script.
+Archivos esenciales a generar:
+templates.py: Este archivo debe generar todas las plantillas HTML necesarias (como index.html, menu.html, mozos.html, bar.html, etc.) para la aplicación. Las páginas deben estar coherentemente diseñadas y ser funcionales con formularios, botones, y tablas según sea necesario.
+static.py: Este archivo debe generar los archivos estáticos necesarios como styles.css y script.js. El diseño visual debe ser atractivo y asegurar una interfaz fluida.
+server.py: Este archivo debe contener toda la lógica del servidor backend utilizando Flask. Debe gestionar los pedidos, los tiempos de espera, el manejo de pagos (simulados por ahora) y la actualización en tiempo real de las interfaces.
+database.py (opcional): Si se implementa una base de datos, este archivo debe manejar la conexión, consultas y actualizaciones relacionadas con los pedidos, productos, etc.
+Generación de logs: Se debe crear un sistema de logs en la carpeta logs/ para registrar eventos y errores en el sistema.
+Al ejecutar create_app.py:
+
+Debe generar todos los archivos de la aplicación correctamente.
+No debe requerir que yo escriba más código o realice ninguna configuración adicional. Todo debe funcionar directamente al ejecutar el archivo.
+Al final, la estructura y los archivos generados deben estar listos para ser desplegados, sin necesidad de intervención adicional.
+Objetivo principal: Asegúrate de que create_app.py sea autónomo y funcione perfectamente desde el primer momento. El archivo debe crear toda la estructura y generar el código de manera coherente, asegurando que la aplicación funcione en su totalidad. Cuando ejecute create_app.py, no tendré que hacer nada más; todo debe estar listo para usar.
+

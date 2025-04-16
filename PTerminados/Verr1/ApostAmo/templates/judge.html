@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del Juez - ApostAmo</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="judge-panel">
+            <h2>Panel del Juez</h2>
+            
+            {% if bet.status == 'finished' %}
+                <div class="decision-made">
+                    <h3>¡Decisión Registrada!</h3>
+                    <p>Esta apuesta ya ha sido finalizada.</p>
+                    <div class="final-result">
+                        <p>Opción ganadora: {{ bet.winner_option }}</p>
+                        <a href="/bet/{{ bet.id }}/result" class="btn-primary">Ver Resultados</a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="bet-info">
+                    <h3>{{ bet.question }}</h3>
+                    <div class="bet-status">
+                        <div class="side-a">
+                            <h4>{{ bet.option_a }}</h4>
+                            <p>Total apostado: {{ bet.total_a }} 💎</p>
+                            <button onclick="decideBet('a')" class="btn-decide">
+                                Declarar Ganador
+                            </button>
+                        </div>
+                        <div class="side-b">
+                            <h4>{{ bet.option_b }}</h4>
+                            <p>Total apostado: {{ bet.total_b }} 💎</p>
+                            <button onclick="decideBet('b')" class="btn-decide">
+                                Declarar Ganador
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="warning-box">
+                    <p>⚠️ IMPORTANTE: Esta decisión es final y no puede ser revertida.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+    async function decideBet(winner) {
+        if (!confirm('¿Estás seguro? Esta acción no se puede deshacer.')) {
+            return;
+        }
+        
+        try {
+            const response = await fetch(window.location.href + '/decide', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ winner })
+            });
+            
+            const data = await response.json();
+            if (data.success) {
+                alert('¡Decisión registrada con éxito!');
+                window.location.reload();
+            } else {
+                alert('Error al registrar la decisión');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al comunicarse con el servidor');
+        }
+    }
+    </script>
+</body>
+</html> 

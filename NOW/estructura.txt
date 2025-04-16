@@ -1,0 +1,11 @@
+NOW/
+├── WifiNow.ps1     # PowerShell – redes en Windows
+├── WifiNow.sh      # Bash – redes en Linux/Mac
+├── WifiNow.py      # Python – redes multiplataforma
+├── PortNow.ps1     # Escaneo de puertos en Windows
+├── PortNow.sh
+├── PortNow.py
+├── NetNow.py       # Info de red en tiempo real
+├── CryptoNow.py    # Criptomonedas en tiempo real
+├── Readme.md       # Explicación del proyecto
+└── InstallerNow.ps1 / .sh  # Instala herramientas comunes necesarias

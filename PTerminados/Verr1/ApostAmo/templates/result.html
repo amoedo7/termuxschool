@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block title %}Resultados - {{ bet.question }}{% endblock %}
+
+{% block content %}
+<div class="result-container">
+    <div class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span class="separator">›</span>
+        <a href="/bet/{{ bet.id }}">Apuesta</a>
+        <span class="separator">›</span>
+        <span class="current">Resultados</span>
+    </div>
+
+    <div class="result-card">
+        <div class="result-header">
+            <h2>{{ bet.question }}</h2>
+            <div class="bet-meta">
+                <span class="bet-id">ID: #{{ bet.id[:8] }}</span>
+            </div>
+        </div>
+
+        <div class="winner-announcement">
+            <div class="winner-badge">
+                🏆 Opción Ganadora 🏆
+            </div>
+            <h3>{{ bet.option_a if bet.winner == 'a' else bet.option_b }}</h3>
+        </div>
+
+        {% if bet.user_bet %}
+        <div class="user-bet-info">
+            <h4>Tu Apuesta</h4>
+            <div class="user-bet-details {% if bet.user_bet.side == bet.winner %}winner{% else %}loser{% endif %}">
+                <span class="bet-option">
+                    {{ bet.option_a if bet.user_bet.side == 'a' else bet.option_b }}
+                </span>
+                <span class="bet-amount">{{ bet.user_bet.amount }} 💎</span>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="results-grid">
+            <div class="result-column {% if bet.winner == 'a' %}winner{% endif %}">
+                <h4>{{ bet.option_a }}</h4>
+                <div class="total-amount">{{ bet.total_a }} 💎</div>
+                <div class="participants-list">
+                    {% for participant in bet.side_a %}
+                    <div class="participant">
+                        <span class="username">{{ participant.username }}</span>
+                        <span class="amount">{{ participant.amount }} 💎</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="result-column {% if bet.winner == 'b' %}winner{% endif %}">
+                <h4>{{ bet.option_b }}</h4>
+                <div class="total-amount">{{ bet.total_b }} 💎</div>
+                <div class="participants-list">
+                    {% for participant in bet.side_b %}
+                    <div class="participant">
+                        <span class="username">{{ participant.username }}</span>
+                        <span class="amount">{{ participant.amount }} 💎</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.result-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.breadcrumb {
+    margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.separator {
+    margin: 0 0.5rem;
+    color: #666;
+}
+
+.result-card {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.result-header {
+    margin-bottom: 2rem;
+}
+
+.bet-meta {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.winner-announcement {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.winner-badge {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.user-bet-info {
+    margin: 2rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.user-bet-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.user-bet-details.winner {
+    background: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+}
+
+.user-bet-details.loser {
+    background: rgba(244, 67, 54, 0.1);
+    color: #f44336;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.result-column {
+    padding: 1rem;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.result-column.winner {
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.total-amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.participants-list {
+    margin-top: 1rem;
+}
+
+.participant {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.participant:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

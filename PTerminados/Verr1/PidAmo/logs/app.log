@@ -1,0 +1,150 @@
+2025-03-07 04:36:58,438 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-07 04:36:58,438 INFO: [33mPress CTRL+C to quit[0m
+2025-03-07 04:36:58,439 INFO:  * Restarting with stat
+2025-03-07 04:36:58,638 WARNING:  * Debugger is active!
+2025-03-07 04:36:58,644 INFO:  * Debugger PIN: 405-577-285
+2025-03-07 04:37:25,603 INFO: 127.0.0.1 - - [07/Mar/2025 04:37:25] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-03-07 04:37:25,689 INFO: 127.0.0.1 - - [07/Mar/2025 04:37:25] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-03-07 04:37:25,696 INFO: 127.0.0.1 - - [07/Mar/2025 04:37:25] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-03-07 04:37:25,859 INFO: 127.0.0.1 - - [07/Mar/2025 04:37:25] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=xTiFlGxaKc4pkZ6VEUOi HTTP/1.1" 200 -
+2025-03-07 04:37:25,860 INFO: 127.0.0.1 - - [07/Mar/2025 04:37:25] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-03-07 04:37:25,897 INFO: 127.0.0.1 - - [07/Mar/2025 04:37:25] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-03-07 04:38:21,659 INFO: 127.0.0.1 - - [07/Mar/2025 04:38:21] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-03-07 04:38:21,694 INFO: 127.0.0.1 - - [07/Mar/2025 04:38:21] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-03-07 04:38:21,700 INFO: 127.0.0.1 - - [07/Mar/2025 04:38:21] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-03-07 04:38:21,898 INFO: 127.0.0.1 - - [07/Mar/2025 04:38:21] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=xTiFlGxaKc4pkZ6VEUOi HTTP/1.1[0m" 304 -
+2025-03-07 04:38:21,899 INFO: 127.0.0.1 - - [07/Mar/2025 04:38:21] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-03-07 04:42:26,101 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-07 04:42:26,101 INFO: [33mPress CTRL+C to quit[0m
+2025-03-07 04:42:26,102 INFO:  * Restarting with stat
+2025-03-07 04:42:26,307 WARNING:  * Debugger is active!
+2025-03-07 04:42:26,308 INFO:  * Debugger PIN: 405-577-285
+2025-03-07 04:42:37,125 INFO: 127.0.0.1 - - [07/Mar/2025 04:42:37] "GET / HTTP/1.1" 200 -
+2025-03-07 04:42:37,196 INFO: 127.0.0.1 - - [07/Mar/2025 04:42:37] "GET /static/styles.css HTTP/1.1" 200 -
+2025-03-07 04:42:37,394 INFO: 127.0.0.1 - - [07/Mar/2025 04:42:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-07 04:42:39,244 INFO: 127.0.0.1 - - [07/Mar/2025 04:42:39] "GET /menu HTTP/1.1" 200 -
+2025-03-07 04:42:39,265 INFO: 127.0.0.1 - - [07/Mar/2025 04:42:39] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-07 04:42:39,266 INFO: 127.0.0.1 - - [07/Mar/2025 04:42:39] "GET /static/script.js HTTP/1.1" 200 -
+2025-03-07 04:42:52,140 INFO: Nuevo pedido: {'table': '21', 'items': {'Hamburguesa': 4, 'Cerveza': 5}, 'time': '2025-03-07 04:42:52', 'status': 'Pendiente'}
+2025-03-07 04:42:52,141 INFO: 127.0.0.1 - - [07/Mar/2025 04:42:52] "[32mPOST /order HTTP/1.1[0m" 302 -
+2025-03-07 04:42:52,144 INFO: 127.0.0.1 - - [07/Mar/2025 04:42:52] "GET /order_confirmation?table=21 HTTP/1.1" 200 -
+2025-03-07 04:44:39,651 INFO: 127.0.0.1 - - [07/Mar/2025 04:44:39] "GET / HTTP/1.1" 200 -
+2025-03-07 04:44:39,664 INFO: 127.0.0.1 - - [07/Mar/2025 04:44:39] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-07 04:44:42,497 INFO: 127.0.0.1 - - [07/Mar/2025 04:44:42] "GET / HTTP/1.1" 200 -
+2025-03-07 04:44:42,509 INFO: 127.0.0.1 - - [07/Mar/2025 04:44:42] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-07 04:44:47,384 INFO: 127.0.0.1 - - [07/Mar/2025 04:44:47] "GET /bar HTTP/1.1" 200 -
+2025-03-07 04:44:47,423 INFO: 127.0.0.1 - - [07/Mar/2025 04:44:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-07 04:44:50,668 INFO: 127.0.0.1 - - [07/Mar/2025 04:44:50] "GET / HTTP/1.1" 200 -
+2025-03-07 04:44:50,684 INFO: 127.0.0.1 - - [07/Mar/2025 04:44:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-07 04:44:56,919 INFO: 127.0.0.1 - - [07/Mar/2025 04:44:56] "[33mGET /mozo HTTP/1.1[0m" 404 -
+2025-03-07 04:45:00,576 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:00] "GET /mozos HTTP/1.1" 200 -
+2025-03-07 04:45:00,593 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-07 04:45:08,232 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:08] "GET /menu HTTP/1.1" 200 -
+2025-03-07 04:45:08,255 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-07 04:45:08,258 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:08] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-03-07 04:45:15,303 INFO: Nuevo pedido: {'table': '11', 'items': {'Hamburguesa': 3, 'Cerveza': 2}, 'time': '2025-03-07 04:45:15', 'status': 'Pendiente'}
+2025-03-07 04:45:15,303 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:15] "[32mPOST /order HTTP/1.1[0m" 302 -
+2025-03-07 04:45:15,307 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:15] "GET /order_confirmation?table=11 HTTP/1.1" 200 -
+2025-03-07 04:45:19,944 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:19] "GET /bar HTTP/1.1" 200 -
+2025-03-07 04:45:19,959 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:19] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-07 04:45:21,983 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:21] "GET /mozos HTTP/1.1" 200 -
+2025-03-07 04:45:21,996 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-07 04:45:48,410 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:48] "[33mGET /cocina HTTP/1.1[0m" 404 -
+2025-03-07 04:45:56,054 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:56] "GET /mozos HTTP/1.1" 200 -
+2025-03-07 04:45:56,069 INFO: 127.0.0.1 - - [07/Mar/2025 04:45:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-07 06:03:31,901 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-07 06:03:31,901 INFO: [33mPress CTRL+C to quit[0m
+2025-03-07 06:03:31,903 INFO:  * Restarting with stat
+2025-03-07 06:03:32,273 WARNING:  * Debugger is active!
+2025-03-07 06:03:32,276 INFO:  * Debugger PIN: 405-577-285
+2025-03-07 06:03:47,312 INFO: 127.0.0.1 - - [07/Mar/2025 06:03:47] "GET / HTTP/1.1" 200 -
+2025-03-07 06:03:47,416 INFO: 127.0.0.1 - - [07/Mar/2025 06:03:47] "GET /static/styles.css HTTP/1.1" 200 -
+2025-03-07 06:03:49,918 INFO: 127.0.0.1 - - [07/Mar/2025 06:03:49] "GET /menu HTTP/1.1" 200 -
+2025-03-07 06:03:49,957 INFO: 127.0.0.1 - - [07/Mar/2025 06:03:49] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-07 06:03:49,965 INFO: 127.0.0.1 - - [07/Mar/2025 06:03:49] "GET /static/script.js HTTP/1.1" 200 -
+2025-03-07 06:04:04,061 INFO: 127.0.0.1 - - [07/Mar/2025 06:04:04] "GET /bar HTTP/1.1" 200 -
+2025-03-07 06:04:04,081 INFO: 127.0.0.1 - - [07/Mar/2025 06:04:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-07 06:04:05,963 INFO: 127.0.0.1 - - [07/Mar/2025 06:04:05] "[33mGET /cocina HTTP/1.1[0m" 404 -
+2025-03-07 06:04:08,319 INFO: Nuevo pedido: {'table': '5', 'items': {'Hamburguesa': 3, 'Cerveza': 2}, 'time': '2025-03-07 06:04:08', 'status': 'Pendiente'}
+2025-03-07 06:04:08,320 INFO: 127.0.0.1 - - [07/Mar/2025 06:04:08] "[32mPOST /order HTTP/1.1[0m" 302 -
+2025-03-07 06:04:08,324 INFO: 127.0.0.1 - - [07/Mar/2025 06:04:08] "GET /order_confirmation?table=5 HTTP/1.1" 200 -
+2025-03-07 06:04:14,347 INFO: 127.0.0.1 - - [07/Mar/2025 06:04:14] "GET /bar HTTP/1.1" 200 -
+2025-03-07 06:04:14,366 INFO: 127.0.0.1 - - [07/Mar/2025 06:04:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-07 06:04:16,186 INFO: 127.0.0.1 - - [07/Mar/2025 06:04:16] "[33mGET /cocina HTTP/1.1[0m" 404 -
+2025-03-07 06:04:22,403 INFO: 127.0.0.1 - - [07/Mar/2025 06:04:22] "GET /mozos HTTP/1.1" 200 -
+2025-03-07 06:04:22,433 INFO: 127.0.0.1 - - [07/Mar/2025 06:04:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-08 22:19:53,994 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-08 22:19:53,995 INFO: [33mPress CTRL+C to quit[0m
+2025-03-08 22:19:53,998 INFO:  * Restarting with stat
+2025-03-08 22:19:54,343 WARNING:  * Debugger is active!
+2025-03-08 22:19:54,345 INFO:  * Debugger PIN: 729-778-636
+2025-03-08 22:20:07,088 INFO: 127.0.0.1 - - [08/Mar/2025 22:20:07] "GET / HTTP/1.1" 200 -
+2025-03-08 22:20:07,210 INFO: 127.0.0.1 - - [08/Mar/2025 22:20:07] "GET /static/styles.css HTTP/1.1" 200 -
+2025-03-08 22:20:07,235 INFO: 127.0.0.1 - - [08/Mar/2025 22:20:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-08 22:20:09,158 INFO: 127.0.0.1 - - [08/Mar/2025 22:20:09] "GET /menu HTTP/1.1" 200 -
+2025-03-08 22:20:09,177 INFO: 127.0.0.1 - - [08/Mar/2025 22:20:09] "GET /static/script.js HTTP/1.1" 200 -
+2025-03-08 22:20:09,178 INFO: 127.0.0.1 - - [08/Mar/2025 22:20:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-08 22:20:16,955 INFO: Nuevo pedido: {'table': '12', 'items': {'Hamburguesa': 50, 'Cerveza': 60}, 'time': '2025-03-08 22:20:16', 'status': 'Pendiente'}
+2025-03-08 22:20:16,955 INFO: 127.0.0.1 - - [08/Mar/2025 22:20:16] "[32mPOST /order HTTP/1.1[0m" 302 -
+2025-03-08 22:20:16,965 INFO: 127.0.0.1 - - [08/Mar/2025 22:20:16] "GET /order_confirmation?table=12 HTTP/1.1" 200 -
+2025-03-08 22:20:27,074 INFO: 127.0.0.1 - - [08/Mar/2025 22:20:27] "[33mGET /cocina HTTP/1.1[0m" 404 -
+2025-03-08 22:20:33,867 INFO: 127.0.0.1 - - [08/Mar/2025 22:20:33] "GET /bar HTTP/1.1" 200 -
+2025-03-08 22:20:33,879 INFO: 127.0.0.1 - - [08/Mar/2025 22:20:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-08 22:20:44,191 INFO: 127.0.0.1 - - [08/Mar/2025 22:20:44] "GET /mozos HTTP/1.1" 200 -
+2025-03-08 22:20:44,214 INFO: 127.0.0.1 - - [08/Mar/2025 22:20:44] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-09 01:20:44,660 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-09 01:20:44,660 INFO: [33mPress CTRL+C to quit[0m
+2025-03-09 01:20:44,663 INFO:  * Restarting with stat
+2025-03-09 01:20:45,094 WARNING:  * Debugger is active!
+2025-03-09 01:20:45,097 INFO:  * Debugger PIN: 729-778-636
+2025-03-09 01:20:50,192 INFO: 127.0.0.1 - - [09/Mar/2025 01:20:50] "GET / HTTP/1.1" 200 -
+2025-03-09 01:20:50,297 INFO: 127.0.0.1 - - [09/Mar/2025 01:20:50] "GET /static/styles.css HTTP/1.1" 200 -
+2025-03-09 01:20:51,209 INFO: 127.0.0.1 - - [09/Mar/2025 01:20:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-09 01:20:54,792 INFO: 127.0.0.1 - - [09/Mar/2025 01:20:54] "GET /menu HTTP/1.1" 200 -
+2025-03-09 01:20:54,819 INFO: 127.0.0.1 - - [09/Mar/2025 01:20:54] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-09 01:20:54,825 INFO: 127.0.0.1 - - [09/Mar/2025 01:20:54] "GET /static/script.js HTTP/1.1" 200 -
+2025-03-09 01:21:03,271 INFO: Nuevo pedido: {'table': '11', 'items': {'Hamburguesa': 4, 'Cerveza': 3}, 'time': '2025-03-09 01:21:03', 'status': 'Pendiente'}
+2025-03-09 01:21:03,272 INFO: 127.0.0.1 - - [09/Mar/2025 01:21:03] "[32mPOST /order HTTP/1.1[0m" 302 -
+2025-03-09 01:21:03,280 INFO: 127.0.0.1 - - [09/Mar/2025 01:21:03] "GET /order_confirmation?table=11 HTTP/1.1" 200 -
+2025-03-09 01:21:08,410 INFO: 127.0.0.1 - - [09/Mar/2025 01:21:08] "GET / HTTP/1.1" 200 -
+2025-03-09 01:21:08,431 INFO: 127.0.0.1 - - [09/Mar/2025 01:21:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-09 01:21:15,078 INFO: 127.0.0.1 - - [09/Mar/2025 01:21:15] "GET /bar HTTP/1.1" 200 -
+2025-03-09 01:21:15,146 INFO: 127.0.0.1 - - [09/Mar/2025 01:21:15] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-09 01:22:12,628 INFO: 127.0.0.1 - - [09/Mar/2025 01:22:12] "GET / HTTP/1.1" 200 -
+2025-03-09 01:22:12,675 INFO: 127.0.0.1 - - [09/Mar/2025 01:22:12] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-09 01:22:15,591 INFO: 127.0.0.1 - - [09/Mar/2025 01:22:15] "GET /mozos HTTP/1.1" 200 -
+2025-03-09 01:22:15,611 INFO: 127.0.0.1 - - [09/Mar/2025 01:22:15] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-15 14:51:01,437 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-15 14:51:01,439 INFO: [33mPress CTRL+C to quit[0m
+2025-03-15 14:51:01,440 INFO:  * Restarting with stat
+2025-03-15 14:51:02,026 WARNING:  * Debugger is active!
+2025-03-15 14:51:02,029 INFO:  * Debugger PIN: 963-684-320
+2025-03-15 14:51:11,881 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:11] "GET / HTTP/1.1" 200 -
+2025-03-15 14:51:11,947 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:11] "GET /static/styles.css HTTP/1.1" 200 -
+2025-03-15 14:51:11,971 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-15 14:51:13,321 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:13] "GET / HTTP/1.1" 200 -
+2025-03-15 14:51:13,334 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-15 14:51:14,266 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:14] "GET /menu HTTP/1.1" 200 -
+2025-03-15 14:51:14,278 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-15 14:51:14,279 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:14] "GET /static/script.js HTTP/1.1" 200 -
+2025-03-15 14:51:21,435 INFO: Nuevo pedido: {'table': '22', 'items': {'Hamburguesa': 343, 'Cerveza': 2312}, 'time': '2025-03-15 14:51:21', 'status': 'Pendiente'}
+2025-03-15 14:51:21,436 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:21] "[32mPOST /order HTTP/1.1[0m" 302 -
+2025-03-15 14:51:21,442 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:21] "GET /order_confirmation?table=22 HTTP/1.1" 200 -
+2025-03-15 14:51:32,264 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:32] "GET /menu HTTP/1.1" 200 -
+2025-03-15 14:51:32,286 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-15 14:51:32,286 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:32] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-03-15 14:51:37,214 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:37] "[33mGET /cocina HTTP/1.1[0m" 404 -
+2025-03-15 14:51:41,409 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:41] "[33mGET /cocina.html HTTP/1.1[0m" 404 -
+2025-03-15 14:51:51,682 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:51] "GET /bar HTTP/1.1" 200 -
+2025-03-15 14:51:51,692 INFO: 127.0.0.1 - - [15/Mar/2025 14:51:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-15 14:52:11,665 INFO: Nuevo pedido: {'table': '4', 'items': {'Hamburguesa': 5, 'Cerveza': 1}, 'time': '2025-03-15 14:52:11', 'status': 'Pendiente'}
+2025-03-15 14:52:11,666 INFO: 127.0.0.1 - - [15/Mar/2025 14:52:11] "[32mPOST /order HTTP/1.1[0m" 302 -
+2025-03-15 14:52:11,672 INFO: 127.0.0.1 - - [15/Mar/2025 14:52:11] "GET /order_confirmation?table=4 HTTP/1.1" 200 -
+2025-03-15 14:52:13,973 INFO: 127.0.0.1 - - [15/Mar/2025 14:52:13] "GET /bar HTTP/1.1" 200 -
+2025-03-15 14:52:13,981 INFO: 127.0.0.1 - - [15/Mar/2025 14:52:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -

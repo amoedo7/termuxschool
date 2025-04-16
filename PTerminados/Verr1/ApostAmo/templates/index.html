@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}ApostAmo - Inicio{% endblock %}
+
+{% block content %}
+{% if session.username %}
+<div class="create-bet-button-container">
+    <a href="{{ url_for('create_bet') }}" class="btn-create-bet">
+        Crear Nueva Apuesta
+    </a>
+</div>
+{% endif %}
+
+<div class="header-section">
+    <img src="{{ url_for('static', filename='images/logo-large.png') }}" alt="ApostAmo" class="landing-logo">
+    <h1>Bienvenido a ApostAmo</h1>
+    <p>Crea tus propias apuestas y comparte con amigos</p>
+    <div class="header-actions">
+        <a href="/create" class="btn-primary">Crear Nueva Apuesta</a>
+        <a href="/ranking" class="btn-secondary">Ver Ranking 🏆</a>
+    </div>
+</div>
+
+<div class="active-bets-section">
+    <h2>Apuestas Activas</h2>
+    {% if active_bets %}
+        <div class="bets-grid">
+            {% for bet in active_bets %}
+                <div class="bet-card">
+                    <h3>{{ bet.question }}</h3>
+                    <div class="options">
+                        <div class="option">
+                            <span class="option-name">{{ bet.option_a }}</span>
+                            <span class="option-amount">{{ bet.total_a }} 💎</span>
+                        </div>
+                        <div class="option">
+                            <span class="option-name">{{ bet.option_b }}</span>
+                            <span class="option-amount">{{ bet.total_b }} 💎</span>
+                        </div>
+                    </div>
+                    <a href="/bet/{{ bet.id }}" class="btn-secondary">Participar</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-bets">No hay apuestas activas en este momento.</p>
+    {% endif %}
+</div>
+
+<style>
+.create-bet-button-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.btn-create-bet {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-create-bet:hover {
+    background-color: #45a049;
+}
+</style>
+{% endblock %}
