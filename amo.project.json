@@ -1,0 +1,14 @@
+{
+  "schema": "desarrollamo.project.v1",
+  "repository": "amoedo7/termuxschool",
+  "name": "termuxschool",
+  "ecosystem": "DesarrollAMO",
+  "type": "education-toolkit",
+  "lifecycle": "historical-learning",
+  "visibility": "public",
+  "source_of_truth": false,
+  "production_url": null,
+  "related": [],
+  "reviewed_at": "2026-08-18",
+  "notes": ["Historical Termux learning and diagnostic collection.", "Scripts must be reviewed before use on modern Android/Termux."]
+}
