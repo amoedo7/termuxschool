@@ -1,94 +1,49 @@
-# 🛡️ Termux Hacker Toolkit
+# TermuxSchool
 
-Conjunto de herramientas de seguridad, análisis forense y monitoreo de red para Android (Termux). Pensado para usuarios con o sin root.
+Colección histórica de **aprendizaje, utilidades y experimentos para Termux/Android** creada durante una etapa temprana de DesarrollAMO.
 
-## 📦 Instalación
+## Estado
+
+**Histórico / educativo.** El repositorio mezcla ejercicios, proyectos terminados, pruebas actuales de aquella etapa y herramientas de diagnóstico. No debe asumirse que todos los scripts siguen siendo compatibles con las versiones actuales de Android/Termux.
+
+## Estructura encontrada
+
+- `scripts/` — utilidades shell/Python;
+- `MiPagina/` — experimentos web;
+- `NOW/` — trabajo que estaba en curso;
+- `PTerminados/` — proyectos terminados de aquella etapa;
+- `TermuxHell/` — experimentación adicional;
+- `main.sh` — launcher histórico;
+- `install-deps.sh` — instalación de dependencias;
+- `requirements.txt` — dependencias Python.
+
+## Herramientas de diagnóstico
+
+El repo contiene scripts relacionados con información del sistema, conexiones, archivos, red y análisis local. Deben usarse **únicamente sobre el propio dispositivo, redes propias o entornos donde exista autorización**.
+
+No se considera un toolkit de pentesting auditado ni una garantía de seguridad.
+
+## Uso
+
+Antes de ejecutar scripts antiguos:
 
 ```bash
-curl -O https://tu-url.com/Termux-Hacker-Pack.zip
-unzip Termux-Hacker-Pack.zip
-cd Termux-Hacker-Pack
-pip install -r requirements.txt
-chmod +x scripts/*.sh scripts/*.py
-⚙️ Post-Instalación Recomendada
-bash
-Copiar
-Editar
-chmod +x scripts/whois-lookup.py
-chmod +x keylogger-detector.sh
-chmod +x find-hidden-files.sh
-chmod +x backdoor-scanner.sh
-chmod +x net-connections.sh
-🔎 Comandos útiles
-bash
-Copiar
-Editar
-# Whois
-python scripts/whois-lookup.py google.com
-python scripts/whois-lookup.py --wifi  # analiza IPs de redes detectadas antes
+pkg update
+```
 
-# Escaneo de archivos ocultos
-./find-hidden-files.sh --fast   # rápido
-./find-hidden-files.sh --deep   # completo
+Revisá el contenido del script y sus dependencias. No ejecutes automáticamente instaladores antiguos como root ni copies comandos privilegiados sin entender qué modifican.
 
-# Conexiones de red
-./net-connections.sh            # modo vivo
-./net-connections.sh --bg       # segundo plano
-🧰 Herramientas Incluidas
-Herramienta	Función principal
-✅ net-info.sh	Info básica de red (IP local, Gateway, MAC...)
-✅ port-scan.sh	Escaneo de puertos abiertos
-✅ wifi-scan.sh	Escaneo de redes WiFi cercanas
-✅ whois-lookup.py	Dueño de IPs o dominios
-✅ proc-monitor.sh	Monitoreo de procesos sospechosos (tcpdump, logkeys, etc.)
-✅ keylogger-detector.sh	Detección de keyloggers y módulos raros
-✅ find-hidden-files.sh	Archivos sospechosos: .bak, .log, .old, ocultos
-✅ backdoor-scanner.sh	Detección de posibles backdoors activos
-✅ net-connections.sh	Conexiones salientes/entrantes con análisis
-✅ sys-info.sh	Información del sistema
-✅ all-root-termux.sh	Gestión de privilegios: Root, FakeRoot, Mortal
-✅ report-gen.sh	Generador de informes forenses en HTML con módulos combinados
-📄 Generación de Reportes
-bash
-Copiar
-Editar
-./report-gen.sh
-Genera automáticamente un archivo .html con:
+## Relación con DesarrollAMO
 
-Usuarios sospechosos activos
+TermuxSchool documenta una parte importante del origen del proyecto: construir desde Android, shell y herramientas ligeras. Hoy esa idea continúa en apps y flujos AMO, pero este repositorio se conserva principalmente como **archivo de aprendizaje y experimentación**.
 
-Procesos inusuales
+## Seguridad
 
-Conexiones abiertas
+- no guardar tokens ni claves en scripts;
+- no versionar `.env`;
+- no ejecutar herramientas sobre sistemas de terceros sin autorización;
+- validar cualquier script que solicite root antes de usarlo.
 
-IPs externas con whois
+---
 
-Archivos ocultos
-
-...y más
-
-Se abre automáticamente al finalizar (si termux tiene permisos).
-
-📂 Estructura del Proyecto
-pgsql
-Copiar
-Editar
-Termux-Hacker-Pack/
-│
-├── scripts/
-│   ├── net-info.sh
-│   ├── port-scan.sh
-│   ├── wifi-scan.sh
-│   ├── whois-lookup.py
-│   ├── proc-monitor.sh
-│   ├── keylogger-detector.sh
-│   ├── find-hidden-files.sh
-│   ├── backdoor-scanner.sh
-│   ├── net-connections.sh
-│   ├── sys-info.sh
-│   ├── all-root-termux.sh
-│   └── report-gen.sh
-│
-├── estructura.txt
-├── requirements.txt
-└── README.md
+**DesarrollAMO** · aprender haciendo, pero dejando claro qué es histórico, experimental y productivo.
